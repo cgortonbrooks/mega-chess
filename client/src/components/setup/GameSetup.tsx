@@ -285,11 +285,15 @@ export function GameSetup(): React.JSX.Element {
       ? new Set([rows - 2, rows - 1])
       : new Set([0, 1]);
 
-  // Row render order — flip board for black so their zone is at the bottom
+  // Row/col render order — rotate board 180° for black so their zone is at the bottom
   const displayRowOrder =
     playerColor === PlayerColor.BLACK
       ? Array.from({ length: rows }, (_, i) => rows - 1 - i)
       : Array.from({ length: rows }, (_, i) => i);
+  const displayColOrder =
+    playerColor === PlayerColor.BLACK
+      ? Array.from({ length: cols }, (_, i) => cols - 1 - i)
+      : Array.from({ length: cols }, (_, i) => i);
 
   const STORE_TYPES: PieceType[] = [
     PieceType.KING,
@@ -429,7 +433,7 @@ export function GameSetup(): React.JSX.Element {
             aria-label="Chess board setup"
           >
             {displayRowOrder.flatMap((rowIdx) =>
-              Array.from({ length: cols }, (_, colIdx) => {
+              displayColOrder.map((colIdx) => {
                 const piece = localBoard[rowIdx]?.[colIdx] ?? null;
                 const inZone = validRowSet.has(rowIdx);
                 const isLight = (rowIdx + colIdx) % 2 === 0;

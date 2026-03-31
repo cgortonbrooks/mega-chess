@@ -21,7 +21,7 @@ export function Chat(): React.JSX.Element {
   }
 
   return (
-    <div className="w-full h-[30rem] flex flex-col rounded-lg border border-gray-600 bg-gray-800">
+    <div className="w-80 shrink-0 h-[30rem] flex flex-col rounded-lg border border-gray-600 bg-gray-800">
       <div className="px-3 py-2 border-b border-gray-600 text-xs font-semibold text-gray-400 uppercase tracking-wide">
         Chat
       </div>

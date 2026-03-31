@@ -42,6 +42,7 @@ function ensureListeners(socket: Socket): void {
       s.setRoomId(data.roomId);
       s.setPlayerColor(data.color);
       s.setGameState(data.state);
+      s.setGameConfig(data.state.config);
     }
   );
 
@@ -52,6 +53,7 @@ function ensureListeners(socket: Socket): void {
       s.setRoomId(data.roomId);
       s.setPlayerColor(data.color);
       s.setGameState(data.state);
+      s.setGameConfig(data.state.config);
     }
   );
 

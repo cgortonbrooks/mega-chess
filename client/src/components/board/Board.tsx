@@ -73,12 +73,14 @@ export function Board(): React.JSX.Element {
           }`}
         />
         <span className={`text-lg font-semibold ${isMyTurn ? "text-green-400" : "text-muted-foreground"}`}>
-          {isMyTurn ? "Your turn" : "Opponent's turn"}
+          {isMyTurn
+            ? `Your turn (${playerColor === PlayerColor.WHITE ? "white" : "black"})`
+            : `Opponent's turn (${playerColor === PlayerColor.WHITE ? "white" : "black"})`}
         </span>
       </div>
 
-      <div className="flex items-start gap-4 w-full max-w-screen-xl mx-auto">
-        <div className="flex-1 min-w-0">
+      <div className="flex items-start gap-4 w-full max-w-screen-xl mx-auto justify-center">
+        <div className="w-80 shrink-0">
           <Chat />
         </div>
 
@@ -110,7 +112,7 @@ export function Board(): React.JSX.Element {
           </DndContext>
         </div>
 
-        <div className="flex-1 min-w-0">
+        <div className="w-80 shrink-0">
           <PieceInfo />
         </div>
       </div>
